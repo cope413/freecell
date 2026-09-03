@@ -1,6 +1,6 @@
 // Service worker: precache the app shell so FreeCell works offline.
 // Bump CACHE_VERSION whenever any shell file changes.
-const CACHE_VERSION = 'v1.0.0';
+const CACHE_VERSION = 'v1.0.1';
 const CACHE_NAME = `freecell-${CACHE_VERSION}`;
 const SHELL = [
   './',
