@@ -1,6 +1,6 @@
 // Service worker: precache the app shell so FreeCell works offline.
 // Bump CACHE_VERSION whenever any shell file changes.
-const CACHE_VERSION = 'v1.0.2';
+const CACHE_VERSION = 'v1.0.3';
 const CACHE_NAME = `freecell-${CACHE_VERSION}`;
 const SHELL = [
   './',
@@ -20,7 +20,9 @@ const SHELL = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE_NAME).then((c) => c.addAll(SHELL)));
+  // cache: 'no-cache' bypasses the browser HTTP cache, so a new version
+  // always precaches fresh files instead of stale max-age copies.
+  e.waitUntil(caches.open(CACHE_NAME).then((c) => c.addAll(SHELL.map((u) => new Request(u, { cache: 'no-cache' })))));
 });
 
 self.addEventListener('activate', (e) => {

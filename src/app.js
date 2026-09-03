@@ -646,7 +646,11 @@ async function registerSW() {
 $('#btn-update').addEventListener('click', async () => {
   if (!swReg) return toast('Offline support is not active.');
   await swReg.update();
-  toast(swReg.waiting || swReg.installing ? 'Updating…' : 'You have the latest version.');
+  // Give the browser a beat to start installing before reporting the result.
+  setTimeout(() => {
+    if (swReg.waiting || swReg.installing) toast('Updating…');
+    else toast('You have the latest version.');
+  }, 800);
 });
 
 // ---------- Boot ----------
