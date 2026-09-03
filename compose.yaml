@@ -1,0 +1,8 @@
+services:
+  freecell:
+    build: .
+    image: freecell-pwa:latest
+    container_name: freecell
+    restart: unless-stopped
+    ports:
+      - "8090:80"   # change the left side to whatever port you want on the host

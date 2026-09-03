@@ -1,0 +1,11 @@
+{
+  "name": "freecell-pwa",
+  "version": "1.0.0",
+  "description": "Ad-free FreeCell progressive web app for self-hosting",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "serve": "npx --yes serve -l 8080 ."
+  },
+  "license": "MIT"
+}
