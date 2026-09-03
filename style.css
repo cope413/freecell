@@ -115,9 +115,10 @@ body {
 .card .corner {
   position: absolute; top: 4%; left: 7%;
   font-size: var(--corner-size);
-  display: flex; flex-direction: column; align-items: center;
+  /* Rank and suit side by side so both stay visible on fanned cards. */
+  display: flex; flex-direction: row; align-items: center; gap: 0.08em;
 }
-.card .corner .suit { font-size: 0.85em; margin-top: -0.05em; }
+.card .corner .suit { font-size: 0.85em; }
 .card .corner.br { top: auto; left: auto; bottom: 4%; right: 7%; transform: rotate(180deg); }
 .card .pip {
   position: absolute; inset: 0;

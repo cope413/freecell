@@ -118,7 +118,8 @@ function cascadeOffsets(colLen) {
   const def = ch * 0.27;
   if (colLen <= 1) return def;
   const avail = bh - cascades[0].y - ch - gap;
-  return Math.max(ch * 0.10, Math.min(def, avail / (colLen - 1)));
+  // Floor of 0.15ch keeps the rank+suit corner readable even in long columns.
+  return Math.max(ch * 0.15, Math.min(def, avail / (colLen - 1)));
 }
 
 function cardPosition(loc, depth, colLen) {
