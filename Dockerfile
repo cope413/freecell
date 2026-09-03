@@ -3,4 +3,6 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html style.css manifest.webmanifest sw.js /usr/share/nginx/html/
 COPY src /usr/share/nginx/html/src
 COPY icons /usr/share/nginx/html/icons
+# Local file permissions vary; make everything readable by the nginx worker.
+RUN chmod -R a+rX /usr/share/nginx/html
 EXPOSE 80
